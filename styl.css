@@ -1,0 +1,280 @@
+:root {
+    --sky-blue-light: #8ecae6;
+    --blue-green: #219ebc;
+    --deep-space-blue: #023047;
+    --amber-flame: #ffb703;
+    --princeton-orange: #fb8500;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    background-color: var(--sky-blue-light);
+    color: var(--deep-space-blue);
+}
+
+.open_page {
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 62fr 38fr;
+    background-color: var(--sky-blue-light);
+    overflow: hidden;
+}
+
+.top,
+.bottom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.top {
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+    background-color: var(--deep-space-blue);
+    color: var(--sky-blue-light);
+    border-radius: 0 0 3.5rem 3.5rem;
+    text-align: center;
+}
+
+.bottom {
+    justify-content: flex-start;
+}
+
+h1 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+    font-size: clamp(4.5rem, 20vw, 10rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+}
+
+.top span {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
+}
+
+.initiate_button {
+    margin-top: -2.5rem;
+    height: 5rem;
+    padding: 0 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--amber-flame);
+    color: var(--deep-space-blue);
+    font-family: inherit;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 0 0.75rem var(--sky-blue-light);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.initiate_button:hover {
+    background-color: var(--princeton-orange);
+}
+
+.initiate_button:active {
+    transform: scale(0.96);
+}
+
+.initiate_button:focus-visible {
+    outline: 3px solid var(--deep-space-blue);
+    outline-offset: 0.9rem;
+}
+
+.app {
+    display: none;
+}
+
+
+.add_btn:hover {
+    background-color: var(--princeton-orange);
+}
+
+.add_btn:active {
+    transform: scale(0.94);
+}
+
+.new_task_section {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: var(--deep-space-blue);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(2, 48, 71, 0.3);
+    transition: box-shadow 0.2s ease;
+}
+
+.new_task_section:focus-within {
+    box-shadow: 0 0 0 3px var(--amber-flame), 0 8px 24px rgba(2, 48, 71, 0.3);
+}
+
+.new_task_input {
+    width: min(20rem, calc(100vw - 9rem));
+    height: 3.5rem;
+    padding: 0 1.25rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--sky-blue-light);
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.new_task_input::placeholder {
+    color: var(--sky-blue-light);
+    opacity: 0.6;
+}
+
+.add_btn {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--amber-flame);
+    color: var(--deep-space-blue);
+    font-size: 1.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.my_task_txt {
+    font-size: 5rem;
+    margin-top: 0;
+}
+
+.task_display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 40rem;
+    padding-bottom: 7rem;
+
+
+}
+
+
+.task_display:empty::before {
+    content: "No tasks yet. Add one below.";
+    font-size: 1.15rem;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.done:checked+span {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .initiate_button {
+        transition: none;
+    }
+}
+
+/* Tablets and below */
+@media (max-width: 768px) {
+    .top {
+        border-radius: 0 0 2.5rem 2.5rem;
+    }
+
+    .app {
+        padding: 1.5rem 1.25rem 0;
+    }
+
+    .my_task_txt {
+        font-size: 3.5rem;
+    }
+
+    .task_display {
+        max-width: 100%;
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    h1 {
+        font-size: clamp(3.5rem, 22vw, 6rem);
+    }
+
+    .top span {
+        font-size: 1.1rem;
+    }
+
+    .initiate_button {
+        height: 4.25rem;
+        padding: 0 3rem;
+        margin-top: -2.125rem;
+        box-shadow: 0 0 0 0.5rem var(--sky-blue-light);
+    }
+
+    .my_task_txt {
+        font-size: 2.5rem;
+    }
+
+    .task_display {
+        padding-bottom: 6rem;
+    }
+
+    .new_task_section {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+    .new_task_input {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+    }
+}
+
+/* Short screens, e.g. phones in landscape */
+@media (max-height: 500px) {
+    .open_page {
+        grid-template-rows: 1fr auto;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .initiate_button {
+        margin-top: -2rem;
+        height: 3.75rem;
+    }
+}
